@@ -1,0 +1,64 @@
+<div class="loader" ng-if="loading === true"></div>
+<div class="row" ng-if="loading === false">
+    <div class="row" style="margin-bottom:20px;">
+        <div class="col-md-12">
+            <div class="alert alert-success">
+                <strong>Success!</strong> Dashboard saved.
+            </div>
+            <button class="btn-sonera" ng-click="saveDashboard()"><i class="fa fa-floppy-o" aria-hidden="true"></i> Save</button>
+            <button class="btn-sonera" ng-click="editDashboard()" ng-class="{'selected' : editMode}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button>
+            <button ng-if="editMode" class="btn-sonera" ng-click="clearDashboard()"><i class="fa fa-trash-o" aria-hidden="true"></i> Clear</button>
+            <button class="btn-sonera pull-right" ng-click="onClickCreate()"><i class="fa fa-plus" aria-hidden="true"></i> Add Widget</button>
+        </div>
+    </div>
+
+    <div class="row" gridster="gridsterOptions">
+
+        <div ng-repeat="chart in charts">
+
+            <div class="panel c8y linear-gauge-prop" ng-if="chart.type === settings.types.LINEAR_GAUGE" gridster-item row="chart.posY" col="chart.posX" size-x="chart.width" size-y="chart.height">
+                <div class="panel-heading">
+                    <h3 class="panel-title">{{chart.title}}</h3>
+                    <button ng-if="editMode" class="btn btn-danger pull-right btn-sm" ng-click="onClickDelete($index)"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                </div>
+                <div class="panel-body">
+                    <c8y-linear-gauge dp="chart.dp" measurement="chart.data[0].measurement" />
+                </div>
+            </div>
+
+            <div class="panel col-md-6" ng-if="chart.type === settings.types.RADIAL_GAUGE" gridster-item row="chart.posY" col="chart.posX" size-x="chart.width" size-y="chart.height">
+                <!-- Without this the whole thing blows up for some reason -->
+                <div class="panel c8y radialgaugepanel">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">{{chart.title}}</h3>
+                        <button ng-if="editMode" class="btn btn-danger pull-right btn-sm" ng-click="onClickDelete($index)"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                    </div>
+                    <div class="panel-body">
+                        <div radial-gauge dp="chart.dp" measurement="chart.data[0].measurement"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel" ng-if="chart.type === settings.types.HISTOGRAM" gridster-item row="chart.posY" col="chart.posX" size-x="chart.width" size-y="chart.height" style="min-height: 280px;">
+                <div class="panel-heading">
+                    <h3 class="panel-title">{{chart.title}}</h3>
+                    <button ng-if="editMode" class="btn btn-danger pull-right btn-sm" ng-click="onClickDelete($index)"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                </div>
+                <div class="panel-body">
+                    <histogram data="chart.data"></histogram>
+                </div>
+            </div>
+
+            <div class="panel" ng-if="chart.type === settings.types.ALARMS" gridster-item row="chart.posY" col="chart.posX" size-x="chart.width" size-y="chart.height">
+                <div class="panel-heading">
+                    <h3 class="panel-title">{{chart.title}}</h3>
+                    <button ng-if="editMode" class="btn btn-danger pull-right btn-sm" ng-click="onClickDelete($index)"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                </div>
+                <div class="panel-body">
+                    <alarm-directive></alarm-directive>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

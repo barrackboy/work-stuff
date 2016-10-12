@@ -1,0 +1,91 @@
+<div class="btn-group alarm-severity">
+  <p>Sort alarms by severity type.</p>
+  <button
+    ng-repeat="severity in severities"
+    class="btn {{severity.cls}}"
+    ng-class="{'active': severity.value === filteredAlarm}"
+    ng-click="filterAlarms(severity.value)">
+    {{severity.name}}
+  </button>
+</div>
+
+<button type="button" class="btn btn-success pull-right cleared-alarms collapsed" data-toggle="collapse" data-target="#clearedAlarms">
+  <span class="show-ctrl">
+    <i class="fa fa-chevron-down"></i> Show cleared alarms
+  </span>
+  <span class="hide-ctrl">
+    <i class="fa fa-chevron-up"></i> Hide cleared alarms
+  </span>
+</button>
+
+<div id="clearedAlarms" class="collapse">
+  <table class="table table-striped">
+    <h2>Cleared Alarms</h2>
+    <thead>
+      <tr>
+        <td>Type</td>
+        <td>Explanation</td>
+        <td>Source device</td>
+        <td>Status</td>
+        <td>Severity</td>
+      </tr>
+    </thead>
+    <tr ng-repeat="alarm in clearedAlarms"
+    filter="section.filter"
+    refresh="section.refresh"
+    realtime="true">
+      <td>{{alarm.type}}</td>
+      <td>{{alarm.text}}</td>
+      <td>{{alarm.source.name}}</td>
+      <td><span ng-class="{'label label-danger' : alarm.status === 'ACTIVE',
+       'label label-primary' : alarm.status === 'ACKNOWLEDGED',
+       'label label-success' : alarm.status === 'CLEARED'}">{{alarm.status}}</span></td>
+      <td><span ng-class="{'label label-danger' : alarm.severity === 'CRITICAL',
+       'label label-warning' : alarm.severity === 'MAJOR',
+       'label label-info' : alarm.severity === 'MINOR',
+       'label label-default' : alarm.severity === 'WARNING'}">{{alarm.severity}}</span></td>
+    </tr>
+  </table>
+</div>
+
+<div class="loader" ng-if="loading === true"></div>
+<div ng-if="loading === false">
+<table class="table table-striped">
+  <h2>Alarms</h2>
+  <thead>
+    <tr>
+      <td>Type</td>
+      <td>Explanation</td>
+      <td>Source device</td>
+      <td>Status</td>
+      <td>Severity</td>
+      <td>Actions</td>
+    </tr>
+  </thead>
+  <tr ng-repeat="alarm in alarms | filter: filteredAlarm"
+  filter="section.filter"
+  refresh="section.refresh"
+  realtime="true">
+    <td>{{alarm.type}}</td>
+    <td>{{alarm.text}}</td>
+    <td>{{alarm.source.name}}</td>
+    <td><span ng-class="{'label label-danger' : alarm.status === 'ACTIVE',
+     'label label-primary' : alarm.status === 'ACKNOWLEDGED',
+     'label label-success' : alarm.status === 'CLEARED'}">{{alarm.status}}</span></td>
+    <td><span ng-class="{'label label-danger' : alarm.severity === 'CRITICAL',
+     'label label-warning' : alarm.severity === 'MAJOR',
+     'label label-info' : alarm.severity === 'MINOR',
+     'label label-default' : alarm.severity === 'WARNING'}">{{alarm.severity}}</span></td>
+     <td width="100">
+       <button type="button" class="btn btn-default alarm-button" ng-click="markAlarmSeen(alarm.id)"
+       data-placement="top"
++        title="Mark alarm as seen"
++        onmouseenter="$(this).tooltip('show')"><i class="fa fa-eye" aria-hidden="true"></i></button>
+       <button ng-if="!isReader" type="button" class="btn btn-default alarm-button" ng-click="clearAlarm(alarm.id)"
+       data-placement="top"
++        title="Update alarm status to cleared"
++        onmouseenter="$(this).tooltip('show')"><i class="fa fa-trash" aria-hidden="true"></i></button>
+     </td>
+  </tr>
+</table>
+</div>
