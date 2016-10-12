@@ -1,0 +1,105 @@
+<div class="alert alert-success">
+    <strong>Success!</strong>
+</div>
+
+<button class="btn-sonera pull-right" ng-click="refreshDevicesPage()">Refresh <i class="fa fa-refresh" id="refreshDevices" aria-hidden="true"></i></button>
+
+
+<div ng-if="currentUserRoles.indexOf('admins') >= 0 || currentUserRoles.indexOf('business') >= 0">
+
+    <h1>Register Device</h1>
+    <form>
+        <div class="form-group">
+            <label>Insert your devices MAC address or IMEI-code here to register it to your Sonera IoX</label>
+            <input type="text" class="form-control" placeholder="Device MAC address" ng-model="devicemac" required>
+        </div>
+        <button class="btn-sonera" ng-click="registerDevice(devicemac)">Register Device</button>
+    </form>
+
+    <div ng-repeat="pendingDevice in deviceRegistrations track by $index" class="pendingDevice">
+        <div class="pendingDeviceItem">
+            Device <b class="sonera-highlight">{{pendingDevice.id}}</b> {{pendingDevice.status === 'PENDING_ACCEPTANCE' ? 'is pending acceptance.' : 'is waiting for connection.'}}
+            <button class="btn-success" ng-click="acceptDevice(pendingDevice.id)" ng-if="pendingDevice.status === 'PENDING_ACCEPTANCE'">Accept</button>
+            <button class="btn-danger" ng-click="cancelRegistration(pendingDevice.id)">Decline</button>
+        </div>
+    </div>
+
+    <hr>
+
+</div>
+
+
+<div class="loader" ng-if="loading === true"></div>
+<div ng-if="loading === false">
+    <h1>All Devices</h1>
+    <table class="table table-hover devices-table">
+        <h3>Gateways</h3>
+        <thead>
+            <tr>
+                <td><b>Name</b></td>
+                <td><b>Type</b></td>
+                <td><b>Status</b></td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="gateway in gateways" ng-click="deviceDetailsModal(gateway, childDevices)">
+                <td>{{gateway.name}}</td>
+                <td>{{gateway.type}}</td>
+                    <td ng-if="gateway.c8y_Availability.status === 'AVAILABLE'"><span class="label label-success">Online</span></td>
+                    <td ng-if="!gateway.c8y_Availability"><span class="label label-warning">Unknown</span></td>
+                    <td ng-if="gateway.c8y_Availability.status === 'UNAVAILABLE'"><span class="label label-danger">Offline</span></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <button type="button" class="btn-sonera collapsed" data-toggle="collapse" data-target="#childDevices">
+      <span class="show-ctrl">
+        <i class="fa fa-chevron-down"></i> Show child devices
+      </span>
+      <span class="hide-ctrl">
+        <i class="fa fa-chevron-up"></i> Hide child devices
+      </span>
+    </button>
+
+    <div id="childDevices" class="collapse">
+        <table class="table table-hover devices-table">
+            <h3>Child Devices</h3>
+            <thead>
+                <tr>
+                    <td><b>Name</b></td>
+                    <td><b>Type</b></td>
+                    <td><b>Status</b></td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="child in childDevices" ng-click="childDeviceDetailsModal(child)">
+                    <td>{{child.name}}</td>
+                    <td>{{child.type}}</td>
+                    <td ng-if="child.c8y_Availability.status === 'AVAILABLE'"><span class="label label-success">Online</span></td>
+                    <td ng-if="!child.c8y_Availability"><span class="label label-warning">Unknown</span></td>
+                    <td ng-if="child.c8y_Availability.status === 'UNAVAILABLE'"><span class="label label-danger">Offline</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div>
+    <h1>Device Groups</h1>
+    <div ng-if="groups.length === 0"><p>There are no device groups.</p></div>
+    <table class="table table-hover" ng-if="groups">
+        <thead>
+            <tr>
+                <td><b>Group Name</b></td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="group in groups" ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()">
+                <td ng-click="groupDetails(group.id)">{{group.name}} <button ng-if="!isReader" ng-show="hoverEdit" class="btn btn-danger pull-right" ng-click="$event.stopPropagation(); deleteGroup(group.id)">Delete group</button></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <button ng-if="!isReader" class="btn-sonera" ng-click="createDeviceGroup()"><i class="fa fa-plus" aria-hidden="true"></i> Create Device Group</button>
+
+</div>

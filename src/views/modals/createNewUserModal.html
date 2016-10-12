@@ -1,0 +1,50 @@
+<div class="modal-header">
+<h3>Create new user</h3>
+</div>
+
+<div class="modal-body">
+  <div class="alert alert-danger">
+    <strong>Conflict! Username or Email taken.</strong>
+  </div>
+  <form role="form">
+    <div class="form-group">
+      <label for="username">Username:</label>
+      <input type="text" class="form-control" ng-model="user.userName" required>
+    </div>
+    <div class="form-group">
+      <label>First name:</label>
+      <input type="text" class="form-control" ng-model="user.firstName">
+    </div>
+    <div class="form-group">
+      <label>Last name:</label>
+      <input type="text" class="form-control" ng-model="user.lastName">
+    </div>
+    <div class="form-group">
+      <label for="email">Email address:</label>
+      <input type="email" class="form-control" ng-model="user.email">
+    </div>
+    <div class="form-group">
+      <label>Phone number:</label>
+      <input type="text" class="form-control" ng-model="user.phone">
+    </div>
+    <div class="form-group">
+      <label for="pwd">Password:</label>
+      <input type="password" class="form-control" ng-model="user.password" required minlength=8>
+    </div>
+    <div class="radio-group" required>
+      <h3>Set user group</h3>
+    <label class="radio-inline">
+      <input type="radio" name="groupradio" value="2" ng-model="groups.group" required> Admin
+    </label>
+
+    <label class="radio-inline">
+      <input type="radio" name="groupradio" value="1" ng-model="groups.group" ng-init="groups.group=1"> User
+    </label>
+
+    <label class="radio-inline">
+      <input type="radio" name="groupradio" value="3" ng-model="groups.group"> Viewer
+    </label>
+    </div>
+    <button class="btn-sonera" ng-click="createUser(user, groups)"><i class="fa fa-floppy-o" aria-hidden="true"></i> Create user</button>
+  </form>
+</div>

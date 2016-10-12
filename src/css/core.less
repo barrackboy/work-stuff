@@ -1,0 +1,364 @@
+/**************** Core CSS *******************/
+@import "colors.less";
+@import "common-styles.less";
+@import "rules.less";
+@import "users.less";
+@import "devices.less";
+@import "alarms.less";
+@import "dashboard.less";
+
+/*
+ * Base structure
+ */
+
+/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+  padding-top: 50px;
+  background-color: @soneraGray10;
+  font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+}
+
+/*
+ * Global add-ons
+ */
+
+.sub-header {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+/*
+ * Top navigation
+ * Hide default border to remove 1px line.
+ */
+.navbar-fixed-top {
+    border: 0;
+}
+
+.navbar-inverse {
+    background-image: linear-gradient(white, white)!important;
+}
+
+.navbar-text {
+  color: @soneraPurple200 !important;
+  &:after, &:before {
+    content: '';
+    display: inline;
+    width: 1px;
+    background: @soneraPurple10;
+    height: 56px;
+    margin-top:-20px;
+    margin-bottom: -100px;
+    position: relative;
+  }
+  &:before{
+    float: left;
+    right: 10px;
+  }
+  &:after{
+    float: right;
+    left: 10px;
+    margin-right: 10px;
+  }
+  @media (max-width: 768px){
+      &:after, &:before {
+        display: none;
+      }
+  }
+}
+
+.navbar-inverse .navbar-nav > li > a:hover,
+.navbar-inverse .navbar-nav > li > a:focus{
+    color: #000;
+}
+
+#navbar,
+.navbar-brand,
+.navbar-right,
+.navbar-brand:hover,
+.navbar-header,
+.navbar-inverse .navbar-toggle:hover,
+.navbar-inverse .navbar-toggle:focus{
+    background-color: white;
+}
+
+.icon-bar,
+.icon-bar:hover {
+    background-color: #652d86 !important;
+}
+
+.navbar-toggle{
+    border: none;
+}
+
+.navbar-brand>img {
+    margin-top: -5px;
+    height: 170%;
+    width: auto;
+}
+
+/*
+ * Sidebar
+ */
+
+/* Hide for mobile, show later */
+
+  .sidebar {
+    position: fixed;
+    top: 51px;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    display: block;
+    padding-left: 20px;
+    overflow-x: hidden;
+    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+    background-color: #652d86;
+    border-right: 1px solid #eee;
+    width:200px;
+
+    @media (max-width: 768px){
+        display:none;
+    }
+  }
+
+  .sidebar-button {
+    margin-right: -20px !important;
+  }
+
+/* Sidebar navigation */
+.nav-sidebar {
+  margin-right: -21px; /* 20px padding + 1px border */
+  margin-left: -20px;
+}
+.nav-sidebar > li > a {
+  padding-right: 20px;
+  padding-left: 20px;
+  color: #fff;
+}
+
+.nav .open>a, .nav .open>a:focus, .nav .open>a:hover {
+    background-color: @soneraPurple500;
+    color:@soneraWhite;
+}
+
+.linkborder li {
+  border-bottom: solid 1px @soneraPurple300;
+}
+.linkborder li:first-child {
+  border-top: solid 1px @soneraPurple300;
+}
+
+.nav-sidebar > li > a:hover,
+.nav-sidebar > li > a:focus {
+  color: @soneraWhite;
+  background-color: @soneraPurple400;
+}
+
+.nav-sidebar > .active > a,
+.nav-sidebar > .active > a:hover,
+.nav-sidebar > .active > a:focus {
+  color: @soneraWhite;
+  background-color: @soneraPurple500;
+}
+
+/*
+ * Main content
+ */
+
+.main {
+  padding: 20px;
+  margin-left: 200px;
+  @media (max-width: 768px){
+      margin-left:0px;
+  }
+}
+@media (min-width: 768px) {
+  .main {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+}
+.main .page-header {
+  margin-top: 0;
+}
+
+
+/*
+ * Placeholder dashboard ideas
+ */
+
+.placeholders {
+  margin-bottom: 30px;
+  text-align: center;
+}
+.placeholders h4 {
+  margin-bottom: 0;
+}
+.placeholder {
+  margin-bottom: 20px;
+}
+.placeholder img {
+  display: inline-block;
+  border-radius: 50%;
+}
+
+.histogram_legend_ul{
+    float:right;
+    width:10%;
+    position:relative;
+    margin-left:0px;
+    padding-left:0px;
+    height: 10em;
+    display: flex;
+    flex-flow: row wrap;
+    list-style-type:none
+}
+
+
+.histogram_legend_div{
+    width: 100%;
+    heigth:10px;
+    margin: 0px;
+    padding: 0px;
+}
+
+.histogram_legend_li_current{
+    padding:0px;
+    margin:0px;
+}
+
+.histogram_legend_li_details > p{
+    padding:0px;
+    margin:0px;
+    font-size: 5px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.glyphicon-triangle-top{
+    color: rgba(126,212, 33,1);
+}
+
+.glyphicon-triangle-bottom{
+    color: rgba(208,2, 27,1);
+}
+
+canvas{
+      width: 100% !important;
+      max-width: 70%;
+      height: auto !important;
+  }
+
+.alarm-severity .btn:focus {
+  outline: none;
+}
+
+/**************************MOBILE**************************************/
+
+/* Custom, iPhone Retina */
+@media only screen and (min-width : 320px) {
+    .histogram_column{
+        width:200px;
+    }
+
+    .histogram_legend_li_current{
+        font-size: 14px;
+    }
+
+    .histogram_legend_li_details > p{
+        font-size: 10px;
+    }
+
+    .panel {
+      padding: 0px;
+    }
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (min-width : 480px) {
+    .histogram_column{
+        width:300px;
+    }
+
+    .panel {
+      padding: 0px;
+    }
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width : 768px) {
+    .histogram_column{
+        width:400px;
+    }
+
+    .panel {
+      padding-bottom: 30px;
+    }
+    .histogram_legend_ul{
+        width: 20%;
+        margin-left: 10px;
+    }
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width : 992px) {
+    .histogram_column{
+        width:400px;
+    }
+
+    .panel {
+      padding: 0px;
+    }
+
+    .histogram_legend_ul{
+        width: 20%;
+        min-height: 40%;
+        margin-left: 10px;
+    }
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width : 1200px) {
+    .histogram_column{
+        width:380px;
+    }
+    .histogram_legend_li_current{
+        font-size: 20px;
+    }
+
+    .histogram_legend_li_details > p{
+        font-size: 15px;
+    }
+    .histogram_legend_ul{
+        width: 20%;
+        min-height: 40%;
+        margin-left: 10px;
+    }
+
+    .panel {
+    padding: 0px;
+  }
+}
+
+@media screen and (min-width: 1900px){
+    .histogram_column{
+        width:450px;
+    }
+    .histogram_legend_li_current{
+        font-size: 17px;
+    }
+
+    .histogram_legend_li_details > p{
+        font-size: 14px;
+    }
+    .histogram_legend_ul{
+        width: 25%;
+        min-height: 40%;
+        margin-left: 10px;
+    }
+
+    .panel {
+    padding: 0px;
+  }
+  }

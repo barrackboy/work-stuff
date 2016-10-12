@@ -1,0 +1,21 @@
+<h3>Active alarms</h3>
+  <table class="table table-borderless">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Alarm</th>
+        <th>Severity</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="alarm in alarms | limitTo: 5">
+        <td>{{alarm.id}}</td>
+        <td>{{alarm.text}}</td>
+        <td ng-class="{'label label-danger' : alarm.severity === 'CRITICAL',
+         'label label-warning' : alarm.severity === 'MAJOR',
+         'label label-info' : alarm.severity === 'MINOR',
+         'label label-default' : alarm.severity === 'WARNING'}">{{alarm.severity}}</td>
+      </tr>
+    </tbody>
+  </table>
+<a class="center-block text-center" ui-sref="home.alarms">More alarms...</a>

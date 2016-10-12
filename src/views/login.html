@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
+  <form class="form-signin">
+    <img src="img/logo-sonera.svg" class="form-signin-heading img-responsive">
+
+    <div class="form-group">
+        <div class="input-group">
+          <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+          <input type="text" class="form-control" name="name" id="inputUsername"  placeholder="Username" required="" autofocus="" ng-model="login.username"/>
+        </div>
+    </div>
+
+    <div class="form-group">
+				<div class="input-group">
+					<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+					<input type="password" class="form-control" name="password" id="inputPassword"  placeholder="Password" required="" ng-model="login.password"/>
+				</div>
+		</div>
+
+    <label class="pull-right">
+      <input type="checkbox" ng-model="login.rememberMe"> <span class="rememberme">REMEMBER ME</span>
+    </label>
+
+    <button class="btn-sonera btn-login" type="submit"
+      c8y-login
+      data-tenant="login.tenant"
+      data-user="login.username"
+      data-password="login.password"
+      data-remember-me="login.rememberMe"
+      on-success="login.onSuccess()"
+    >Login</button>
+  </form>
+  <a href="" class="pull-right forgot-password">Forgot password?</a>
+</div>
+</div>
+<div class="container">
+<div class="row">
+  <div class="alert alert-danger login-failed">
+    <strong>Failed to login!</strong> Wrong account or password.
+  </div>
+</div>
+</div>

@@ -1,0 +1,87 @@
+<div class="modal-header">
+
+  <div class="alert alert-info">
+    <strong>Device restarting!</strong> It will take few minutes.
+  </div>
+
+  <form role="form">
+    <h3 contenteditable ng-model="device.name" type="text">{{gatewayInfo.name}}</h3>
+    <button ng-if="!isReader" class="btn-sonera pull-right" ng-click="restartDevice(gatewayInfo.id)"><i class="fa fa-power-off" aria-hidden="true"></i> Restart device</button>
+    <div class="row">
+    <leaflet ng-if="mapIsReady" lf-center="center" markers="markers" height="300px" class="leaflet"></leaflet>
+  </div>
+</div>
+
+<div class="modal-body">
+
+    <table class="table table-borderless">
+        <thead>
+            <tr>
+                <td><b>Type</b></td>
+                <td><b>Name</b></td>
+                <td><b>Status</b></td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{gatewayInfo.type}}</td>
+                <td>{{gatewayInfo.name}}</td>
+                <ul>
+                    <td ng-if="gatewayInfo.c8y_Availability.status === 'AVAILABLE'"><span class="label label-success">Online</span></td>
+                    <td ng-if="!gatewayInfo.c8y_Availability"><span class="label label-warning">Unknown</span></td>
+                    <td ng-if="gatewayInfo.c8y_Availability.status === 'UNAVAILABLE'"><span class="label label-danger">Offline</span></td>
+            </tr>
+        </tbody>
+    </table>
+<hr>
+
+<button type="button" class="btn-sonera collapsed" data-toggle="collapse" data-target="#deviceChilds">
+  <span class="show-ctrl">
+    <i class="fa fa-chevron-down"></i> Show child devices
+  </span>
+  <span class="hide-ctrl">
+    <i class="fa fa-chevron-up"></i> Hide child devices
+  </span>
+</button>
+
+<div id="deviceChilds" class="collapse">
+    <table class="table">
+        <h4>Child Devices</h4>
+        <thead>
+            <tr>
+                <td><b>Name</b></td>
+                <td><b>Type</b></td>
+                <td><b>Status</b></td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="child in gatewayChildDevices">
+                <td>{{child.name}}</td>
+                <td>{{child.type}}</td>
+                <td ng-if="child.c8y_Availability.status === 'AVAILABLE'"><span class="label label-success">Online</span></td>
+                <td ng-if="!child.c8y_Availability"><span class="label label-warning">Unknown</span></td>
+                <td ng-if="child.c8y_Availability.status === 'UNAVAILABLE'"><span class="label label-danger">Offline</span></td>
+            </tr>
+        </tbody>
+    </table>
+  </div>
+<hr>
+    <!-- <form role="form" ng-if="!isReader"> -->
+        <!-- <div class="form-group">
+            <h4>Rename Gateway</h4>
+            <input type="text" class="form-control" ng-model="device.lal" placeholder="{{gatewayInfo.name}}">
+        </div> -->
+
+        <select ng-if="!isReader" class="styled-select" ng-model="group.id">
+            <option disabled selected value> -- select device group -- </option>
+            <option ng-repeat="group in groups" value="{{group.id}}">{{group.name}}</option>
+        </select>
+
+        <!-- <select ng-if="!isReader" class="styled-select"
+     ng-options="group.name for group in groups track by group.id"
+     ng-model="group.id"></select> -->
+
+        <button ng-if="!isReader" class="btn-sonera" ng-click="saveGatewayDetails(device, group)"><i class="fa fa-floppy-o" aria-hidden="true"></i> Save</button>
+        <button ng-if="currentUserRoles.indexOf('admins') >= 0" class="btn-sonera pull-right" ng-click="deleteDevice(gatewayInfo.id)"><i class="fa fa-trash-o" aria-hidden="true"></i> Remove device</button>
+    </form>
+</div>

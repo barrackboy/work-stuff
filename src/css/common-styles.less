@@ -1,0 +1,252 @@
+/***************** Common and general styles **********************/
+.btn-sonera {
+  background-color: @soneraPurple100;
+  color: #fff;
+  padding: 10px 20px 10px 20px;
+  font-size: 16px;
+  border:none;
+  line-height: 16px;
+  transition-duration: 0.2s;
+  &:hover {
+    background-color: @soneraPurple50;
+    transition-duration: 0.3s;
+  }
+}
+
+.selected {
+  background-color: @soneraPurple500;
+}
+
+.btn-sonera-selected {
+  background-color: @soneraPurple500;
+  color: #fff;
+  padding: 10px 20px 10px 20px;
+  font-size: 16px;
+  border:none;
+  line-height: 16px;
+  transition-duration: 0.2s;
+  &:hover {
+    background-color: @soneraPurple300;
+    transition-duration: 0.3s;
+  }
+}
+
+.btn-graph {
+  min-width: 100px;
+  margin:5px;
+}
+
+//Firefox form bug fix
+input[type="email"], input[type="password"], input[type="text"]
+{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    height: 42px; // Increase height as required
+    margin-bottom: 30px;
+    padding: 0 20px; // Now only left & right padding
+}
+
+.form-control {
+  border:none;
+  border: 2px solid @soneraGray30;
+  padding: 20px 15px;
+  line-height: 1.25em;
+  -webkit-appearance: none;
+  appearance: none;
+  border-radius: 0;
+  &:focus {
+    border: 2px solid @soneraPurple50;
+  }
+}
+
+label {
+  display: block;
+  font-size: 16px;
+  font-weight: normal;
+  line-height: 1.5;
+  color: #808080;
+  padding-bottom: 10px;
+  border-radius: 0px !important;
+}
+
+.modal-content  {
+    -webkit-border-radius: 0px !important;
+    -moz-border-radius: 0px !important;
+    border-radius: 0px !important;
+}
+
+.sonera-highlight {
+  color: @soneraPurple200;
+}
+
+.btn-danger,
+.btn-success,
+.btn-warning {
+  border-radius: 0px !important;
+}
+
+/* Spinning animation for refresh buttons */
+.imageRot {
+   -webkit-animation:spin 0.5s ease-in-out;
+    -moz-animation:spin 0.5s ease-in-out;
+    animation:spin 0.5s ease-in-out;
+}
+@-moz-keyframes spin {
+    100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); }
+}
+@-webkit-keyframes spin {
+    100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); }
+}
+@keyframes spin {
+    100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); }
+}
+
+/* Loader animation */
+.loader {
+  border: 16px solid @soneraGray30;
+  border-radius: 50%;
+  border-top: 16px solid @soneraPurple100;
+  width: 80px;
+  height: 80px;
+  -webkit-animation: loader-spin 2s linear infinite;
+  animation: loader-spin 2s linear infinite;
+  margin:auto;
+  margin-top:50px;
+}
+
+@-webkit-keyframes loader-spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes loader-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Alarm directive styles */
+.table tbody>tr>td.label{
+  display: inline-block;
+  margin-top: 5px;
+}
+
+svg {
+  padding-bottom:25px;
+  margin-left:-15px;
+}
+
+.modal-body h4 {
+  display:inline-block;
+}
+
+.dropdown-menu {
+  width:200px;
+  border-radius: 0px;
+}
+
+.dropdown .dropdown-menu {
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+
+    max-height: 0;
+    display: block;
+    overflow: hidden;
+    opacity: 0;
+}
+
+.dropdown.open .dropdown-menu {
+    max-height: 500px;
+    min-height: 300px;
+    opacity: 1;
+}
+
+button:focus {outline:0;}
+
+// FAQ area
+.faqh3{
+  color: #652d86;
+}
+#faqh2,#faqh3{
+  color: #652d86;
+}
+
+
+// Feedback area
+#h2feeback{
+  color: #652d86;
+}
+#feedback-link a{
+  text-decoration: none;
+}
+
+.QnA div:nth-of-type(odd){
+  color: red;
+}
+.QnA div:nth-of-type(even){
+  color: green;
+}
+
+
+
+.histogram_legend_li_current{
+  color:red;
+  font-size: 20px !important;
+}
+
+
+
+//linear Gauge Min-height
+.linear-gauge-prop {
+    min-height: 144px;
+}
+
+
+
+
+
+
+//Button on the Line graph
+
+.small-button{
+    font-size: 0.875em;
+    display: inline-block;
+    /* left: 1%; */
+    /* margin-top: 46px; */
+    background: #652d86;
+    position: relative;
+    top: -36px;
+    border: none;
+    color: white;
+    width:40px;
+}
+
+
+
+
+@media screen and (max-width: 900px) {
+    .small-button {
+    font-size: 0.5em;
+    display: inline-block;
+    background: #652d86;
+    position: relative;
+    top: -36px;
+    //float: none;
+    border: none;
+    color: white;
+    margin: 3px;
+}
+
+
+.histogram_legend_li_current{
+  color:red;
+  font-size: .75em !important;
+}
+
+
+
+}
+

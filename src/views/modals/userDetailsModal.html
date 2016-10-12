@@ -1,0 +1,40 @@
+<div class="modal-header">
+<h3>{{user.userName}}</h3>
+</div>
+
+<div class="modal-body">
+<p><h4>Username:</h4> {{user.id}}</p>
+<p><h4>User email:</h4> {{user.email ? user.email : 'Email not set.'}}</p>
+<p><h4>Groups:</h4>
+  <div ng-repeat="group in user.groups.references" style="display:inline-block;">
+    <span class="label label-info label-groups">
+      <span ng-if="group.group.name === 'admins'">Admin</span>
+      <span ng-if="group.group.name === 'devices'">User</span>
+      <span ng-if="group.group.name === 'business'">User</span>
+      <span ng-if="group.group.name === 'readers'">Viewer</span>
+    </span>
+  </div>
+</p>
+
+
+<form role="form">
+<div class="radio-group">
+  <h3>Set user groups</h3>
+<label class="radio-inline">
+  <input type="radio" name="optradio" value="2" ng-model="userGroupValue"> Admin
+</label>
+
+<label class="radio-inline">
+  <input type="radio" name="optradio" value="1" ng-model="userGroupValue"> User
+</label>
+
+<label class="radio-inline">
+  <input type="radio" name="optradio" value="3" ng-model="userGroupValue"> Viewer
+</label>
+</div>
+</form>
+
+<button class="btn-sonera" ng-click="deleteUser(user.id)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete user</button>
+<button class="btn-sonera pull-right" ng-click="saveUser(userGroupValue)"><i class="fa fa-floppy-o" aria-hidden="true"></i> Save</button>
+
+</div>

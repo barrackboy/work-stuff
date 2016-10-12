@@ -1,0 +1,55 @@
+<div ng-if="currentState === 'LOADING'">
+    <p>Loading Charts..</p>
+</div>
+<div ng-if="currentState === 'OK'">
+    <div class="histogram_column" >
+        <div ng-repeat="data in  dataArray">
+            <canvas id="chart.id" class="chart chart-line" chart-colours="colours[$index]" chart-options="{true: activeChartOptions, false: inactiveChartOptions}[$index==activeChartIndex]" chart-data="data[aggregation].averages" chart-labels="data[aggregation].labels"
+                chart-legend="false" style="position:absolute; width: auto; min-height: 170px;">
+      </canvas>
+        </div>
+
+    </div>
+    <ul class="histogram_legend_ul">
+        <li class="histogram_legend_li">
+            <p class="buttonRowDescription">
+
+            </p>
+
+            <!--<li class="histogram_legend_li">
+                <div class="btn-group btn-group-xs pull-right" role="group" aria-label="...">
+                    <button type="button" class="btn-sonera btn-graph" ng-class="{'btn-sonera-selected': aggregation == aggregationTypes.HOURLY}" ng-click="showOneDay()">Day</button>
+                    <button type="button" class="btn-sonera btn-graph" ng-class="{'btn-sonera-selected': aggregation == aggregationTypes.DAILY}" ng-click="showOneWeek()">Week</button>
+                </div>-->
+
+
+
+
+
+            <div class="pull-right" role="group" aria-label="...">
+                <button class="small-button" ng-class="{'btn-small-selected':aggregation == aggregationTypes.HOURLY}" ng-click="showOneDay()">Day</button>
+                <button class="small-button" ng-class="{'btn-small-selected':aggregation == aggregationTypes.DAILY}" ng-click="showOneWeek()">Week</button>
+            </div>
+
+
+
+
+
+
+
+
+        </li>
+        <div ng-repeat="data in  dataArray" class="histogram_legend_div">
+            <li class="histogram_legend_li" ng-mouseover="changeActiveChart($index)" ng-style="legendStyle($index)">
+                <p class="histogram_legend_li_current">{{data.measurement.value}} {{data.unit}}</p>
+                <div class="histogram_legend_li_details">
+                    <p class="histogram_legend_li_p"><span class="glyphicon glyphicon-triangle-top" /> {{data[aggregation].max.value}} {{data.unit}}
+                    </p>
+                    <p class="histogram_legend_li_p"><span class="glyphicon glyphicon-triangle-bottom" /> {{data[aggregation].min.value}} {{data.unit}}
+                    </p>
+                </div>
+            </li>
+
+        </div>
+    </ul>
+</div>

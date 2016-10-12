@@ -1,0 +1,73 @@
+/************* Users *********************/
+
+.users h2 {
+  display:inline;
+  }
+
+.table-borderless tbody tr td,
+.table-borderless tbody tr th,
+.table-borderless thead tr th {
+    border: none;
+}
+.table-borderless thead tr th {
+  border-bottom: solid thin;
+}
+.user-table {
+  margin-top:40px;
+  tbody tr td ul {
+    margin:0;
+    padding: 0;
+    li {
+      margin-left: 5px;
+      margin-top: 5px;
+      list-style-type: none;
+      display:inline-block;
+    }
+  }
+}
+
+.solo-user-table {
+  tbody tr td ul {
+    margin:0;
+    padding: 0;
+    li {
+      margin-left: 5px;
+      margin-top: 5px;
+      list-style-type: none;
+      display:inline-block;
+    }
+  }
+  clear:both;
+}
+
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+  background-color: @soneraGray30;
+  cursor: pointer;
+}
+
+.delete-user-warning {
+  margin-top:20px;
+  display:none;
+  button {
+  margin-left: 10px;
+  }
+}
+
+.delete-user-success {
+  margin-top: 20px;
+  display:none;
+}
+
+.users-refresh-button {
+  margin-right:10px;
+}
+
+.alert-success,
+.alert-danger,
+.alert-info {
+  display:none;
+}
+
+.checkbox-group {
+  margin-bottom:10px;
+}

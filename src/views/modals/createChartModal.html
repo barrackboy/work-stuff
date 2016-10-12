@@ -1,0 +1,50 @@
+<div class="modal-header">
+  <h3 class="modal-title" ng-if="currentState == state.CHART_TYPE">Select panel type:</h3>
+  <h3 class="modal-title" ng-if="currentState == state.DEVICEGW">Select Device Gateway:</h3>
+  <h3 class="modal-title" ng-if="currentState == state.DEVICE">Select Device:</h3>
+  <h3 class="modal-title" ng-if="currentState == state.SENSOR">Select Sensor(s):</h3>
+  <h3 class="modal-title" ng-if="currentState == state.NAME">Select Chart Name</h3>
+</div>
+<div class="modal-body">
+  <form>
+    <div ng-if="currentState == state.CHART_TYPE">
+      <div class="radio" ng-repeat="item in settings.types">
+        <label><input type="radio" name="optradio" ng-click="$event.preventDefault(); selectChartType(item)">{{item}}</label>
+      </div>
+    </div>
+    <div ng-if="currentState == state.DEVICEGW">
+      <div ng-repeat="device in settings.devices">
+        <div class="radio">
+          <label><input type="radio" name="optradio" ng-click="$event.preventDefault(); selectDeviceGW(device)">{{device.name}}</label>
+        </div>
+      </div>
+    </div>
+    <div ng-if="currentState == state.DEVICE">
+      <h3>{{selectedDeviceGW.name}}</h3>
+      <hr>
+      <div class="radio" ng-repeat="item in selectedDeviceGW.devices">
+        <label><input type="radio" name="optradio" ng-click="$event.preventDefault(); selectDevice(item.id, item)">{{item.name}}</label>
+      </div>
+    </div>
+
+    <div ng-if="currentState == state.SENSOR">
+      <h3>{{selectDeviceName}}</h3>
+      <div class="radio" ng-if="enableAllSensorsSelection">
+        <label><input type="radio" name="optradio" ng-click="$event.preventDefault(); selectAllSensorsForSelectedDevice()">All Sensors</label>
+      </div>
+
+      <div class="radio" ng-repeat="sensor in selectedDeviceSensors">
+        <label><input type="radio" name="optradio" ng-click="$event.preventDefault(); selectSensor(sensor.series, sensor.sensor)">{{sensor.sensor}} - {{sensor.series}}</label>
+      </div>
+    </div>
+
+    <div ng-if="currentState == state.NAME">
+      <div class="form-group">
+        <label for="titleInput">Chart Title</label>
+        <input type="text" class="form-control" id="titleInput" placeholder="Title" ng-model="chartName">
+      </div>
+      <button class="btn btn-success" type="submit" ng-click="ok()">OK</button>
+      <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+    </div>
+  </form>
+</div>

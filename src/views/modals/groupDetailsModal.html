@@ -1,0 +1,27 @@
+<div class="modal-header">
+<h3>Group details</h3>
+</div>
+
+<div class="modal-body">
+<h3>Name: {{group.name}}</h3>
+<h3>Owner: {{group.owner}}</h3>
+<hr>
+<table class="table">
+    <h4>Group Devices</h4>
+    <thead ng-if="group.childAssets.references">
+        <tr>
+            <td><b>ID</b></td>
+            <td><b>Name</b></td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="device in group.childAssets.references" ng-if="group.childAssets.references">
+            <td>{{device.managedObject.id}}</td>
+            <td>{{device.managedObject.name}}</td>
+            <td><button ng-if="!isReader" class="btn btn-danger pull-right" ng-click="deleteDeviceFromGroup(device.managedObject.id, group.id)"><i class="fa fa-trash-o" aria-hidden="true"></i> Remove from group</button></td>
+        </tr>
+        <tr ng-if="group.childAssets.references.length === 0"><td>No devices in group.</td></tr>
+    </tbody>
+</table>
+
+</div>

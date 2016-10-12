@@ -1,0 +1,54 @@
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="img/favicon.png" />
+
+    <title>Sonera IOT</title>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" type="text/css" href="vendor/vendorbundle.min.css">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/core.css">
+
+    <!-- Vendor JS -->
+    <script src="vendor/vendorbundle.js"></script>
+
+    <!-- Source JS loaded from Grunt task -->
+    <!-- angular -->
+    <script src="js/app.js" type="text/javascript"></script>
+    <script src="js/factory/editable.js" type="text/javascript"></script>
+    <script src="js/factory/cumulocity_factory.js" type="text/javascript"></script>
+    <script src="js/factory/converter_factory.js" type="text/javascript"></script>
+    <script src="js/factory/chart_factory.js" type="text/javascript"></script>
+    <script src="js/factory/c8yDeviceGroup_factory.js" type="text/javascript"></script>
+    <script src="js/directives/radial_gauge_directive.js" type="text/javascript"></script>
+    <script src="js/directives/histogram_directive.js" type="text/javascript"></script>
+    <script src="js/directives/datapoint_directive.js" type="text/javascript"></script>
+    <script src="js/directives/alarms_directive.js" type="text/javascript"></script>
+    <script src="js/controllers/users_ctrl.js" type="text/javascript"></script>
+    <script src="js/controllers/usermodal_ctrl.js" type="text/javascript"></script>
+    <script src="js/controllers/main_ctrl.js" type="text/javascript"></script>
+    <script src="js/controllers/login_ctrl.js" type="text/javascript"></script>
+    <script src="js/controllers/groupmodal_ctrl.js" type="text/javascript"></script>
+    <script src="js/controllers/devices_ctrl.js" type="text/javascript"></script>
+    <script src="js/controllers/devicemodal_ctrl.js" type="text/javascript"></script>
+    <script src="js/controllers/dashboard_ctrl.js" type="text/javascript"></script>
+    <script src="js/controllers/createnewusermodal_ctrl.js" type="text/javascript"></script>
+    <script src="js/controllers/creategroupmodal_ctrl.js" type="text/javascript"></script>
+    <script src="js/controllers/childdevicemodal_ctrl.js" type="text/javascript"></script>
+    <script src="js/controllers/chart_modal_ctrl.js" type="text/javascript"></script>
+    <script src="js/controllers/alarms_ctrl.js" type="text/javascript"></script>
+    <script src="js/constants.js" type="text/javascript"></script>
+    <!-- endangular -->
+
+</head>
+
+<body ng-app="soneraiox">
+    <div ui-view></div>
+    <!-- Livereload for development phase -->
+    <script src="//localhost:35729/livereload.js"></script>
+</body>
+
+</html>
