@@ -1,0 +1,39 @@
+{
+  "name": "hello-core-api",
+  "version": "6.3.0",
+  "authors": [
+    "Cumulocity GmbH"
+  ],
+  "description": "Cumulocity UI Core API examples",
+  "keywords": [
+    "cumulocity",
+    "m2m",
+    "examples",
+    "demo"
+  ],
+  "dependencies": {
+    "cumulocity-clients-javascript": "latest",
+    "bootstrap": "~3.3.5",
+    "angular-route": "1.2.20",
+    "angular-ui-bootstrap-bower": "0.11.0",
+    "d3": "3.5.5",
+    "angular-chart.js": "^0.10.2",
+    "angular-ui-router": "^0.3.1",
+    "font-awesome": "fontawesome#^4.6.3",
+    "angular-leaflet-directive": "^0.10.0",
+    "leaflet": "^0.7.7",
+    "bootstrap-sweetalert": "^1.0.1",
+    "angular-gridster": "^0.13.14",
+    "moment-timezone": "^0.5.5"
+  },
+  "license": "MIT",
+  "homepage": "http://www.cumulocity.com",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {}
+}
