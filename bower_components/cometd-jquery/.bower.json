@@ -1,0 +1,14 @@
+{
+  "name": "cometd-jquery",
+  "homepage": "https://github.com/cometd/cometd",
+  "version": "2.7.0",
+  "_release": "2.7.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "2.7.0",
+    "commit": "bc803c9c735f1751443db810e4fd2a71bea7fd67"
+  },
+  "_source": "https://github.com/cometd/cometd.git",
+  "_target": "2.7.0",
+  "_originalSource": "cometd-jquery"
+}

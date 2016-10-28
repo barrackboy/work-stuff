@@ -1,0 +1,13 @@
+target/
+overlays/
+.classpath
+.project
+.settings
+*.log
+*.swp
+*.diff
+*.patch
+*.iml
+*.ipr
+*.prj
+.idea

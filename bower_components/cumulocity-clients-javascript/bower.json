@@ -1,0 +1,34 @@
+{
+  "name": "cumulocity-clients-javascript",
+  "version": "0.0.4",
+  "authors": [
+    "Cumulocity GmbH"
+  ],
+  "description": "Cumulocity core services on top of Angular.js for rapid web application development",
+  "main": "build/main.js",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "cumulocity",
+    "m2m"
+  ],
+  "license": "MIT",
+  "homepage": "http://www.cumulocity.com",
+  "dependencies": {
+    "lodash": "2.4.1",
+    "jquery": "2.1.1",
+    "moment": "2.8.3",
+    "angular": "1.2.20",
+    "ng-file-upload": "1.6.12",
+    "cometd-jquery": "2.7.0",
+    "d3": "3.5.5"
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

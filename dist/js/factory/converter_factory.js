@@ -107,7 +107,7 @@
         }
 
         function filterHourlyValuesForLast24Hours(aggregatedMeasurements) {
-            var hoursInDay = 6;
+            var hoursInDay = 12;
             filterValues(aggregatedMeasurements, hoursInDay);
         }
 

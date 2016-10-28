@@ -15,10 +15,6 @@ angular.module('soneraiox').controller('createChartModalCtrl', function($modalIn
 
  $scope.currentState = $scope.state.CHART_TYPE;
 
-  $scope.cancel = function () {
-      $modalInstance.dismiss('cancel');
-  }
-
   $scope.ok = function () {
       var choice = {
           childDeviceId: $scope.selectedDevice,
@@ -29,6 +25,14 @@ angular.module('soneraiox').controller('createChartModalCtrl', function($modalIn
       };
       $modalInstance.close(choice);
   }
+  
+  $scope.cancel = function () {
+      $modalInstance.close();
+  };
+  
+  $scope.goBack = function () {
+      $scope.currentState = $scope.state.CHART_TYPE;
+  };
 
   $scope.selectChartType = function (type) {
       $scope.selectedChartType = type;

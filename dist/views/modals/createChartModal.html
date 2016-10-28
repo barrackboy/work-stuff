@@ -18,6 +18,7 @@
           <label><input type="radio" name="optradio" ng-click="$event.preventDefault(); selectDeviceGW(device)">{{device.name}}</label>
         </div>
       </div>
+      <button class="btn btn-warning" type="button" ng-click="goBack()"><i class="fa fa-arrow-left" aria-hidden="true"></i> Go Back</button>
     </div>
     <div ng-if="currentState == state.DEVICE">
       <h3>{{selectedDeviceGW.name}}</h3>
@@ -25,6 +26,7 @@
       <div class="radio" ng-repeat="item in selectedDeviceGW.devices">
         <label><input type="radio" name="optradio" ng-click="$event.preventDefault(); selectDevice(item.id, item)">{{item.name}}</label>
       </div>
+      <button class="btn btn-warning" type="button" ng-click="goBack()"><i class="fa fa-arrow-left" aria-hidden="true"></i> Go Back</button>
     </div>
 
     <div ng-if="currentState == state.SENSOR">
@@ -36,6 +38,7 @@
       <div class="radio" ng-repeat="sensor in selectedDeviceSensors">
         <label><input type="radio" name="optradio" ng-click="$event.preventDefault(); selectSensor(sensor.series, sensor.sensor)">{{sensor.sensor}} - {{sensor.series}}</label>
       </div>
+      <button class="btn btn-warning" type="button" ng-click="goBack()"><i class="fa fa-arrow-left" aria-hidden="true"></i> Go Back</button>
     </div>
 
     <div ng-if="currentState == state.NAME">
@@ -44,7 +47,9 @@
         <input type="text" class="form-control" id="titleInput" placeholder="Title" ng-model="chartName">
       </div>
       <button class="btn btn-success" type="submit" ng-click="ok()">OK</button>
-      <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+      <button class="btn btn-danger" type="button" ng-click="cancel()">Cancel</button>
+      <button class="btn btn-warning" type="button" ng-click="goBack()"><i class="fa fa-arrow-left" aria-hidden="true"></i> Go Back</button>
     </div>
   </form>
 </div>
+

@@ -33,7 +33,10 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown-menu" role="button" aria-haspopup="true" aria-expanded="false">Applications <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li ng-repeat="app in applications">
-                <a href="" ng-href="https://your.soneraiox.fi/apps/{{app.contextPath}}">{{app.name}}</a>
+               <!--new line below-->
+               <a ng-href="https://your.soneraiox.fi/apps/{{app.contextPath}}">{{app.name}}</a>
+              <!--old line below-->
+                <!--<a href="" ng-href="https://your.soneraiox.fi/apps/{{app.contextPath}}">{{app.name}}</a>-->
               </li>
           </ul>
         </li>
@@ -48,13 +51,16 @@
           <li ui-sref-active-eq="active"><a ui-sref="home.feedback">Feedback</a></li>
           <!-- <li ui-sref-active-eq="active"><a ui-sref="home.rules">Smart Rules</a></li>  -->
         </ul>
+     <div class="version">
+    V. 1.0
+    </div>
       </div>
 
 
       <div class="main">
         <ui-view name="content"></ui-view>
       </div>
-
     </div>
   </div>
+  
 </div>
